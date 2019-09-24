@@ -17,8 +17,6 @@ namespace TestSystemMemoryAzuerFunction
             [HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-
             var name = "Test";
             try
             {
@@ -29,11 +27,9 @@ namespace TestSystemMemoryAzuerFunction
 
                 log.LogError(e.Message);
             }
-            
 
-            return name != null
-                ? (ActionResult)new OkObjectResult($"Hello, {name}")
-                : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+
+            return new NoContentResult();
         }
     }
 }
